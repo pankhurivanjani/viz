@@ -21,37 +21,37 @@
  */
 
 #include <iostream>
-#include <Ice/Ice.h>
-#include <visionlib/colorspaces/colorspacesmm.h>
+
+#include </opt/jderobot/include/jderobot/visionlib/colorspaces/colorspacesmm.h>
 #include "viewer.h"
-#include <jderobot/config/config.h> 
-#include <jderobot/comm/communicator.hpp>
-#include <jderobot/comm/cameraClient.hpp>
-#include <jderobot/types/image.h>
+//#include <jderobot/config/config.h> 
+//#include <jderobot/comm/communicator.hpp>
+//#include <jderobot/comm/cameraClient.hpp>
+#include </opt/jderobot/include/jderobot/types/image.h>
 
 int main(int argc, char** argv){
 
 	camViz::Viewer viewer;
 	
 
-	Comm::CameraClient* camRGB;
+	//Comm::CameraClient* camRGB;
 
-	Config::Properties cfg = Config::load(argc, argv);
-	Comm::Communicator* jdrc = new Comm::Communicator(cfg);
+	//Config::Properties cfg = Config::load(argc, argv);
+	//Comm::Communicator* jdrc = new Comm::Communicator(cfg);
 
-	camRGB = Comm::getCameraClient(jdrc, "camViz.Camera");
+	//camRGB = Comm::getCameraClient(jdrc, "camViz.Camera");
 
 	JdeRobotTypes::Image rgb;
 
 	while(viewer.isVisible()){
 		//jderobot::ImageDataPtr data = camRGB->getImageData(format);
 
-		rgb = camRGB->getImage();
-		viewer.display(rgb.data);
+	//	rgb = camRGB->getImage();
+	//	viewer.display(rgb.data);
 		viewer.displayFrameRate(0);
 	}
 
-	delete jdrc;
+	//delete jdrc;
 
 	return 0;
 }

@@ -7,13 +7,27 @@ set(CMAKE_CXX_FLAGS "-std=c++11")
 
 SET( SOURCE_FILES camViz.cpp viewer.cpp)
 
-add_definitions(-DGLADE_DIR="${gladedir}")
+#add_definitions(-DGLADE_DIR="${gladedir}")
+
+find_package(PkgConfig)
+pkg_check_modules(GTKMM gtkmm-3.0)
+pkg_check_modules(libglademm libglademm-2.4)
+
+include_directories(${GTKMM_INCLUDE_DIRS})
+link_directories(
+    ${GTKMM_LIBRARY_DIRS}
+ #   ${libglademm_LIBRARY_DIRS}
+)
+
+
+SET( LIBS_EXTRA       resourcelocator )
+
 
 include_directories(
     ${INTERFACES_CPP_DIR}
     ${LIBS_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${gtkmm_INCLUDE_DIRS}
+    #${gtkmm_INCLUDE_DIRS}
     ${libglademm_INCLUDE_DIRS}
     ${gtkglextmm_INCLUDE_DIRS}
     ${ZLIB_INCLUDE_DIRS}
@@ -35,13 +49,13 @@ TARGET_LINK_LIBRARIES(camViz
     ${CMAKE_THREAD_LIBS_INIT} 
     ${OpenCV_LIBRARIES}
     ${OpenCVGUI_LIBRARIES}
-    ${gtkmm_LIBRARIES}
+    ${GTKMM_LIBRARIES}
     ${libglademm_LIBRARIES}
     colorspacesmm
     ${ZeroCIce_LIBRARIES}
     ${ZLIB_LIBRARIES}
     ${CMAKE_THREAD_LIBS_INIT}
-	${resourcelocator_LIBRARIES}
+   ${resourcelocator_LIBRARIES}
     ${catkin_LIBRARIES}
     ${comm_LIBRARIES}
     ${config_LIBRARIES}

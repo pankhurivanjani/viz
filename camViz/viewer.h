@@ -24,10 +24,10 @@
 
 #include <gtkmm.h>
 #include <libglademm.h>
-#include <IceUtil/Thread.h>
-#include <IceUtil/Time.h>
+//#include <IceUtil/Thread.h>
+//#include <IceUtil/Time.h>
 #include <string>
-#include <visionlib/colorspaces/colorspacesmm.h>
+//#include <visionlib/colorspaces/colorspacesmm.h>
 
 namespace camViz{
 
@@ -54,7 +54,7 @@ namespace camViz{
 
       
     //! time variables for calculating number of frames per second 
-    IceUtil::Time currentFrameTime,oldFrameTime;
+    //IceUtil::Time currentFrameTime,oldFrameTime;
     double fps;
     int frameCount;
   };
